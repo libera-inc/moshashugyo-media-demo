@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>デモページ</title>
+        <meta name="format-detection" content="telephone=no, address=no, email=no" />
+
+        <!-- font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet" />
+
+        <!-- css -->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- noindex -->
+        <meta name="robots" content="noindex,nofollow" />
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="title">フォームのカスタマイズ</h1>
+
+            <form action="" method="post" class="form">
+                <!-- テキスト -->
+                <div class="form-item">
+                    <label for="name" class="form-label">テキスト</label>
+                    <input type="text" name="name" id="name" placeholder="山田 太郎" class="form-text" />
+                </div>
+
+                <!-- テキストエリア -->
+                <div class="form-item">
+                    <label for="contact" class="form-label">テキストエリア</label>
+                    <textarea name="contact" id="contact" placeholder="お問い合わせ内容を記入してください。" class="form-text form-text--textarea"></textarea>
+                </div>
+
+                <!-- ラジオボタン -->
+                <fieldset class="form-item">
+                    <legend class="form-label">ラジオボタン</legend>
+                    <div class="form-option-wrap">
+                        <input type="radio" name="Radio01" value="Radio01" class="form-option form-option--radio visually-hidden" id="Radio01" />
+                        <label class="form-option-label form-option-label--radio" for="Radio01">
+                            <span>Radio01</span>
+                        </label>
+
+                        <input type="radio" name="Radio01" value="Radio02" class="form-option form-option--radio visually-hidden" id="Radio02" />
+                        <label class="form-option-label form-option-label--radio" for="Radio02">
+                            <span>Radio02</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- チェックボックス -->
+                <fieldset class="form-item">
+                    <legend class="form-label">チェックボックス</legend>
+                    <div class="form-option-wrap">
+                        <input type="checkbox" name="CheckBox01" value="CheckBox01" class="form-option form-option--checkbox visually-hidden" id="CheckBox01" />
+                        <label class="form-option-label form-option-label--checkbox" for="CheckBox01">
+                            <span>CheckBox01</span>
+                        </label>
+
+                        <input type="checkbox" name="CheckBox02" value="CheckBox02" class="form-option form-option--checkbox visually-hidden" id="CheckBox02" />
+                        <label class="form-option-label form-option-label--checkbox" for="CheckBox02">
+                            <span>CheckBox02</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- セレクトボックス -->
+                <div class="form-item">
+                    <label for="select" class="form-label">セレクトボックス</label>
+                    <div class="form-select-wrap">
+                        <select name="select" id="select" class="form-select">
+                            <option value="option01">option01</option>
+                            <option value="option02">option02</option>
+                            <option value="option03">option03</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 送信ボタン -->
+                <div class="form-item">
+                    <button class="form-button">送信する</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

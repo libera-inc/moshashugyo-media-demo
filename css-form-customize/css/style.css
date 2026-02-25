@@ -1,0 +1,245 @@
+:root {
+    --color-font-base: #4c566a;
+    --color-primary: #5e81ac;
+    --color-white: #fff;
+    --color-black: #424242;
+    --color-black-hover: #000;
+    --color-black-focus: #000;
+    --color-border: #d8dee9;
+    --color-form-border: #d8dee9;
+    --color-placeholder: #d8dee9;
+    --color-focus-border: #5e81ac;
+    --base-line-height: 1.7;
+    --base-font-size: 18px;
+}
+
+body {
+    line-height: var(--base-line-height);
+    font-size: var(--base-font-size);
+    color: var(--color-font-base);
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    padding: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    margin: -1px !important;
+}
+
+.container {
+    width: min(90%, 600px);
+    margin: 100px auto;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* ======================= */
+/* テキスト / テキストエリア */
+/* ======================= */
+.form-text {
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    outline: none;
+}
+
+/* プレースホルダー */
+.form-text::placeholder {
+    font-weight: bold;
+    color: var(--color-placeholder);
+}
+
+/* フォーカス時 */
+.form-text:focus {
+    outline: 1px solid var(--color-focus-border);
+}
+
+/* テキストエリア固有（高さ・自動リサイズ） */
+.form-text--textarea {
+    min-height: 150px;
+    field-sizing: content;
+}
+
+/* ======================= */
+/* ラジオボタン・チェックボックス */
+/* ======================= */
+.form-option-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.form-option-label {
+    --radio-checkbox-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+}
+
+/* ラベルテキスト（透明のborderでフォーカス時のレイアウトシフトを防止） */
+.form-option-label span {
+    --form-option-underline-width: 2px;
+    opacity: 0.7;
+    border-top: var(--form-option-underline-width) solid transparent;
+    border-bottom: var(--form-option-underline-width) solid transparent;
+}
+
+/* ラジオ/チェックボックスの枠（::beforeで描画） */
+.form-option-label::before {
+    content: "";
+    display: inline-block;
+    width: var(--radio-checkbox-size);
+    height: var(--radio-checkbox-size);
+    border: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+/* ラジオ用・丸形 */
+.form-option-label--radio::before {
+    border-radius: 50%;
+}
+
+/* チェックボックス用・角丸四角 */
+.form-option-label--checkbox::before {
+    border-radius: 4px;
+}
+
+/* チェック時のラベルテキスト */
+.form-option:checked + .form-option-label span {
+    color: var(--color-primary);
+    opacity: 1;
+}
+
+/* チェック時の枠（背景色をprimaryに） */
+.form-option:checked + .form-option-label::before {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* チェック時のアイコン（::after + mask-imageで白い図形を表示） */
+.form-option:checked + .form-option-label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: var(--radio-checkbox-size);
+    height: var(--radio-checkbox-size);
+    transform: translateY(-50%);
+    background-color: var(--color-white);
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+/* ラジオ用・丸アイコン */
+.form-option--radio:checked + .form-option-label--radio::after {
+    mask-image: url(../img/icon-radio.svg);
+}
+
+/* チェックボックス用・チェックマークアイコン */
+.form-option--checkbox:checked + .form-option-label--checkbox::after {
+    mask-image: url(../img/icon-check.svg);
+}
+
+/* フォーカス時のラベル（下線で表示） */
+.form-option:focus-visible + .form-option-label span {
+    opacity: 1;
+    border-bottom: var(--form-option-underline-width) solid var(--color-focus-border);
+}
+
+/* ======================= */
+/* セレクトボックス */
+/* ======================= */
+.form-select-wrap {
+    position: relative;
+}
+
+/* プルダウン矢印（borderで三角形を描画して45度回転） */
+.form-select-wrap::after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    translate: 0 -50%;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    rotate: 45deg;
+    pointer-events: none;
+}
+
+.form-select {
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--color-border);
+}
+
+/* セレクトのフォーカス時 */
+.form-select:focus {
+    outline: 1px solid var(--color-focus-border);
+}
+
+/* ======================= */
+/* 送信ボタン */
+/* ======================= */
+.form-button {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    display: block;
+    padding: 14px 24px;
+    font-weight: bold;
+    border-radius: 100vh;
+    outline: none;
+    border: 3px solid var(--color-black);
+    transition:
+        background-color 0.3s,
+        border 0.3s;
+}
+
+@media (any-hover: hover) {
+    .form-button:hover {
+        background-color: var(--color-black-hover);
+    }
+}
+
+.form-button:focus {
+    background-color: var(--color-black-focus);
+    border: 3px solid var(--color-focus-border);
+}
