@@ -5,13 +5,14 @@
     --color-primary: #126445;
     --color-primary-light: #a8c7bc;
     --color-primary-dark: #075538;
+    --font-family-base: "M PLUS Rounded 1c", sans-serif;
 }
 
 body {
     line-height: 1.7;
     font-size: 16px;
     color: var(--color-base-text);
-    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-family: var(--font-family-base);
 }
 
 @media screen and (min-width: 768px) {
